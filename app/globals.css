@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* Global styles */
+@layer base {
+  body {
+    @apply font-desert text-ash-dark;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-adventure;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-earth-beige;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-rust-medium rounded-full hover:bg-rust-dark transition-colors;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-[1.02];
+  }
+  
+  .btn-primary {
+    @apply bg-desert-gold text-ash-dark px-6 py-3 rounded-lg font-medium hover:bg-desert-amber transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border-2 border-desert-gold text-desert-gold px-6 py-3 rounded-lg font-medium hover:bg-desert-gold/10 transition-all duration-300 hover:scale-105;
+  }
+  
+  /* Image loading and optimization */
+  .img-container {
+    @apply relative overflow-hidden rounded-xl;
+  }
+  
+  .img-container img {
+    @apply w-full h-full object-cover transition-transform duration-500 hover:scale-105;
+  }
+  
+  .img-placeholder {
+    @apply absolute inset-0 bg-gradient-to-r from-desert-sand to-earth-tan flex items-center justify-center;
+  }
+  
+  .img-source {
+    @apply absolute bottom-2 right-2 text-white text-xs bg-black/50 px-2 py-1 rounded;
+  }
+}  
+
+/* Image loading animation */
+@keyframes imageLoad {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.img-container img {
+  animation: imageLoad 0.5s ease-out forwards;
+}
